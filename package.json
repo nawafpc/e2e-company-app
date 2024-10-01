@@ -90,8 +90,9 @@
     "hash": "68e2043026841097ec2e2d9b5cc204d977ed81e1390dbe0dbf3c06f319459281"
   },
   "scripts": {
+    "start": "vite",
     "build": "vite build",
-    "start": "vite"
+    "dev": "vite"
   },
   "overrides": {
     "@vaadin/bundles": "$@vaadin/bundles",
