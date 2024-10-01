@@ -17,7 +17,7 @@ const customConfig = {
 
   // Configure server settings
   server: {
-    port: 3000, // Specify the port your app will run on
+    port: 15006, // Specify the port your app will run on
     open: true, // Automatically open the app in the browser on start
   },
 
