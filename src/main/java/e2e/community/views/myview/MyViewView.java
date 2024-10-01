@@ -21,6 +21,8 @@ import com.vaadin.flow.theme.lumo.LumoUtility.Gap;
 import com.vaadin.flow.theme.lumo.LumoUtility.Padding;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
+import java.util.ArrayList;
+import java.util.List;
 
 @PageTitle("My View")
 @Menu(icon = "line-awesome/svg/pencil-ruler-solid.svg", order = 0)
@@ -54,7 +56,7 @@ public class MyViewView extends Composite<VerticalLayout> {
         layoutRow.setAlignItems(Alignment.START);
         layoutRow.setJustifyContentMode(JustifyContentMode.START);
         h1.setText("E2E Community");
-        layoutRow.setAlignSelf(FlexComponent.Alignment.CENTER, h1);
+        layoutRow.setAlignSelf(Alignment.CENTER, h1);
         h1.setWidth("max-content");
         layoutColumn2.setWidthFull();
         getContent().setFlexGrow(1.0, layoutColumn2);
@@ -71,7 +73,7 @@ public class MyViewView extends Composite<VerticalLayout> {
         layoutColumn3.setHeight("100px");
         layoutColumn3.setJustifyContentMode(JustifyContentMode.CENTER);
         layoutColumn3.setAlignItems(Alignment.CENTER);
-        h32.setText("question will appear here for e2e Community");
+//        h32.setText("question will appear here for e2e Community");
         h32.setWidth("max-content");
         messageInput2.setWidth("550px");
         layoutColumn4.setWidthFull();
@@ -81,9 +83,9 @@ public class MyViewView extends Composite<VerticalLayout> {
         layoutColumn4.setHeight("400px");
         layoutColumn4.setJustifyContentMode(JustifyContentMode.END);
         layoutColumn4.setAlignItems(Alignment.CENTER);
-        layoutColumn4.setAlignSelf(FlexComponent.Alignment.CENTER, messageList);
+        layoutColumn4.setAlignSelf(Alignment.CENTER, messageList);
         messageList.setWidth("100%");
-        setMessageListSampleData(messageList);
+//        setMessageListSampleData(messageList);
         layoutRow2.setWidthFull();
         getContent().setFlexGrow(1.0, layoutRow2);
         layoutRow2.addClassName(Gap.MEDIUM);
@@ -113,16 +115,43 @@ public class MyViewView extends Composite<VerticalLayout> {
         getContent().add(layoutRow2);
         layoutRow2.add(buttonPrimary);
         layoutRow2.add(buttonPrimary2);
+
+
+        messageInput.addSubmitListener(event -> {
+            String messageText = event.getValue(); // Get the message text
+            h32.setText(messageText); // Call the addMessage method
+            messageInput.getElement().executeJs("this.value = '';");
+//            messageInput2.setVisible(true);
+            // Clear the input after sending
+        });
+
+        messageInput2.addSubmitListener(event -> {
+            String messageText = event.getValue(); // Get the message text
+            addMessage(messageList, messageText); // Call the addMessage method
+            messageInput.getElement().executeJs("this.value = '';"); // Clear the input after sending
+//            messageInput2.setVisible(false);
+
+        });
+
+
+
+    }
+    private void addMessage(MessageList messageList, String answer) {
+        // Get the current items from the message list
+        List<MessageListItem> currentMessages = new ArrayList<>(messageList.getItems());
+
+        // Create a new MessageListItem with the answer and current time
+        MessageListItem newMessage = new MessageListItem(
+                answer,
+                LocalDateTime.now().toInstant(ZoneOffset.UTC),
+                "Your Name" // You can replace this with the actual user's name
+        );
+        // Optionally set the user color index
+        newMessage.setUserColorIndex(3); // Set an appropriate index for color
+        // Add the new message to the list of current messages
+        currentMessages.add(newMessage);
+        // Set the updated list back to the message list
+        messageList.setItems(currentMessages);
     }
 
-    private void setMessageListSampleData(MessageList messageList) {
-        MessageListItem message1 = new MessageListItem("Nature does not hurry, yet everything gets accomplished.",
-                LocalDateTime.now().minusDays(1).toInstant(ZoneOffset.UTC), "Matt Mambo");
-        message1.setUserColorIndex(1);
-        MessageListItem message2 = new MessageListItem(
-                "Using your talent, hobby or profession in a way that makes you contribute with something good to this world is truly the way to go.",
-                LocalDateTime.now().minusMinutes(55).toInstant(ZoneOffset.UTC), "Linsey Listy");
-        message2.setUserColorIndex(2);
-        messageList.setItems(message1, message2);
-    }
 }
