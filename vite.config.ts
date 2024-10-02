@@ -33,7 +33,6 @@
 //
 // // Export the overridden Vaadin configuration with the custom Vite settings
 // export default overrideVaadinConfig(() => customConfig);
-
 import { defineConfig } from 'vite';
 import { overrideVaadinConfig } from './vite.generated';
 
