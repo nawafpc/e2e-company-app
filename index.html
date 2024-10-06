@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>e2e-com</title>
-    <style>
-      body {
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>e2e-com</title>
+  <base href="/"> <!-- Include this if necessary -->
+  <link rel="icon" type="image/png" href="favicon.png"> <!-- Optional favicon -->
+  <style>
+    body {
         margin: 0;
         width: 100vw;
         height: 100vh;
-      }
+    }
 
-      #outlet {
+    #outlet {
         height: 100%;
-      }
-    </style>
-    <!-- index.ts is included here automatically (either by the dev server or during the build) -->
-  </head>
+    }
+  </style>
+  <!-- index.ts is included here automatically (either by the dev server or during the build) -->
+</head>
 
-  <body>
-    <div id="outlet"></div>
-  </body>
+<body>
+<div id="outlet"></div> <!-- Main application root -->
+
+<!-- Optional: Console log to check loading -->
+<script>
+  window.onload = function() {
+      console.log("Application has loaded.");
+  };
+</script>
+</body>
 </html>
