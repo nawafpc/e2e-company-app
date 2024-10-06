@@ -4,30 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>e2e-com</title>
-  <base href="/"> <!-- Include this if necessary -->
-  <link rel="icon" type="image/png" href="favicon.png"> <!-- Optional favicon -->
   <style>
     body {
-        margin: 0;
-        width: 100vw;
-        height: 100vh;
+      margin: 0;
+      width: 100vw;
+      height: 100vh;
     }
 
     #outlet {
-        height: 100%;
+      height: 100%;
     }
   </style>
-  <!-- index.ts is included here automatically (either by the dev server or during the build) -->
+  <!-- Load the index.ts file -->
+  <script type="module" src="./src/index.ts"></script>
 </head>
 
 <body>
-<div id="outlet"></div> <!-- Main application root -->
-
-<!-- Optional: Console log to check loading -->
-<script>
-  window.onload = function() {
-      console.log("Application has loaded.");
-  };
-</script>
+<div id="outlet"></div>
 </body>
 </html>
