@@ -27,6 +27,7 @@ import java.util.List;
 @PageTitle("My View")
 @Menu(icon = "line-awesome/svg/pencil-ruler-solid.svg", order = 0)
 @Route("")
+    @StyleSheet("frontend/themes/e2e-company/styles.css")
 public class MyViewView extends Composite<VerticalLayout> {
 
     public MyViewView() {
