@@ -119,6 +119,6 @@
     "@fontsource/cairo": "$@fontsource/cairo"
   },
   "engines": {
-    "node": "20.17.0"
+    "node": "20.15.1"
   }
 }
