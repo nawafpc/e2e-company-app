@@ -32,7 +32,7 @@ import { overrideVaadinConfig } from './vite.generated';
 // Custom Vite configuration
 const customConfig = defineConfig({
   // Base URL for the application (leave it as '/' for relative paths)
-  base: '/', 
+  base: './', 
 
   // Configure server settings
   server: {
