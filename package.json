@@ -48,8 +48,5 @@
     "start": "vite",
     "build": "vite build",
     "dev": "vite"
-  },
-  "engines": {
-    "node": "20.15.1"
   }
 }
