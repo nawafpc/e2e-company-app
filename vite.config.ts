@@ -52,3 +52,10 @@ const customConfig = defineConfig({
 
 // Export the overridden Vaadin configuration with the custom Vite settings
 export default overrideVaadinConfig(() => customConfig);
+
+export default overrideVaadinConfig(() => ({
+  ...customConfig,
+  server: {
+    hmr: true, // Enable Hot Module Replacement
+  },
+}));
