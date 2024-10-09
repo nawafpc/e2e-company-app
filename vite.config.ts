@@ -32,7 +32,7 @@ import { overrideVaadinConfig } from './vite.generated';
 // Custom Vite configuration
 const customConfig = defineConfig({
   // Base URL for the application (leave it as '/' for relative paths)
-  base: './', 
+  base: './',  // Use relative paths to work with Vercel
 
   // Configure server settings
   server: {
@@ -49,10 +49,7 @@ const customConfig = defineConfig({
       input: 'index.html', // Ensure this points to your index.html
     },
   },
-
-  // Add any other custom Vite parameters you might need
 });
 
 // Export the overridden Vaadin configuration with the custom Vite settings
 export default overrideVaadinConfig(() => customConfig);
-
